@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
         mc
 
 # Указываем рабочую директорию для PHP
-#WORKDIR /var/www
+#WORKDIR /var/www/html
 
 # Запускаем контейнер
 # Из документации: The main purpose of a CMD is to provide defaults for an executing container. These defaults can include an executable,

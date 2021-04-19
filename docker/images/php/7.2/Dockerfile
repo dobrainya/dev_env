@@ -26,6 +26,6 @@ RUN usermod -u 1000 www-data \
     && chown -R www-data:www-data /var/www
 
 # Указываем рабочую директорию для PHP
-WORKDIR /var/www
+WORKDIR /var/www/html
 
 USER www-data:www-data
