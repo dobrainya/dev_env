@@ -1,0 +1,43 @@
+# Версия docker-compose
+version: "3.7"
+
+x-extra-hosts: &Hosts
+  - "app.local:180.88.0.1"
+
+networks:
+  ilnbrains:
+    external: true
+    name: ilnbrains
+
+services:
+  ilnbrains-dev-php:
+    build: ./docker/images/php/7.2
+    volumes:
+      - ./app:/var/www/html
+    hostname: ilnbrains-dev-php
+    environment:
+      APPLICATION_ENV: "development"
+    extra_hosts: *Hosts
+    networks:
+      - ilnbrains
+  ilnbrains-dev-nginx:
+    image: nginx
+    ports:
+      - "127.0.0.1:80:80"
+      - "127.0.0.1:443:443"
+    volumes:
+      - ./docker/config/nginx:/etc/nginx/conf.d
+      - ./app:/var/www/html
+      - ./logs/nginx:/var/log/nginx
+    hostname: ilnbrains-dev-nginx
+    networks:
+      - ilnbrains
+  ilnbrains-dev-postgresql:
+    build: ./docker/images/db/postgresql/10
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - ./var/postgresql:/var/lib/postgresql
+    hostname: ilnbrains-dev-postgres
+    networks:
+      - ilnbrains
