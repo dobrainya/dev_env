@@ -34,7 +34,7 @@ services:
   ilnbrains-dev-postgresql:
     build: ./docker/images/db/postgresql/10
     ports:
-      - "127.0.0.1:54320:54320"
+      - "127.0.0.1:5432:5432"
     volumes:
       - ./var/postgresql:/var/lib/postgresql
     hostname: ilnbrains-dev-postgres

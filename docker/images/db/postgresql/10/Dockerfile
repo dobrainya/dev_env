@@ -4,7 +4,8 @@ FROM postgres:10.6
 RUN apt-get update && apt-get install -y \
         nano \
         mc
+COPY init-db.sql docker-entrypoint-initdb.d/
 
-EXPOSE 54320
+#EXPOSE 5432
 
 CMD ["postgres"]
