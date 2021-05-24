@@ -1,4 +1,3 @@
-# Версия docker-compose
 version: "3.7"
 
 x-extra-hosts: &Hosts
@@ -35,7 +34,7 @@ services:
   ilnbrains-dev-postgresql:
     build: ./docker/images/db/postgresql/10
     ports:
-      - "127.0.0.1:5432:5432"
+      - "127.0.0.1:54320:54320"
     volumes:
       - ./var/postgresql:/var/lib/postgresql
     hostname: ilnbrains-dev-postgres

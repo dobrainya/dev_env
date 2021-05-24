@@ -5,5 +5,6 @@ RUN apt-get update && apt-get install -y \
         nano \
         mc
 
-EXPOSE 5432
+EXPOSE 54320
+
 CMD ["postgres"]
