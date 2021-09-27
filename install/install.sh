@@ -23,9 +23,6 @@ sudo bash -c "cat >> /etc/hosts ${SCRIPT_DIR}/install/etc/hosts.txt"
 # Настройка docker
 sudo usermod -aG docker $USER
 
-# создаем новую сеть для приложения
-docker network create ilnbrains --subnet 180.88.0.0/24 --gateway 180.88.0.1
-
 cd "${SCRIPT_DIR}" && docker-compose -f docker-compose.yml up --no-start
 
 sudo apt autoremove -y
